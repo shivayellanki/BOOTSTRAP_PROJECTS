@@ -1,0 +1,633 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ShopSmart - Products</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    /* simple theme helpers */
+    .hero {
+      background: linear-gradient(135deg, rgba(0,0,0,.6), rgba(0,0,0,.3)), url('https://picsum.photos/seed/ShopSmart-Products/1600/600') center/cover no-repeat;
+      color: white;
+      padding: 6rem 0;
+    }
+    .section-pad { padding: 4rem 0; }
+    .rounded-2xl { border-radius: 1.25rem; }
+    .shadow-soft { box-shadow: 0 10px 30px rgba(0,0,0,.08); }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar navbar-expand-lg bg-body-tertiary sticky-top">
+    <div class="container">
+      <a class="navbar-brand fw-bold" href="#">ShopSmart</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample" aria-controls="navbarsExample" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarsExample">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item"><a class="nav-link active" href="#home">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="#features">Features</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+        </ul>
+        <div class="d-flex gap-2">
+          <button class="btn btn-warning" id="liveToastBtn">Show Toast</button>
+          <button class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#subscribeModal">Subscribe</button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <section id="home" class="hero">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-lg-8">
+          <h1 class="display-4 fw-bold">Shop the Latest.</h1>
+          <p class="lead">Trending gadgets, fashion, and home essentials.</p>
+          <div class="d-flex gap-2">
+            <a class="btn btn-primary btn-lg" href="#features">Explore</a>
+            <a class="btn btn-outline-light btn-lg" data-bs-toggle="modal" data-bs-target="#subscribeModal">Get Updates</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+    <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
+      <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="toast-header">
+          <strong class="me-auto">ShopSmart</strong>
+          <small>just now</small>
+          <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+        </div>
+        <div class="toast-body">
+          Welcome! Enjoy exclusive launch deals today.
+        </div>
+      </div>
+    </div>
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        const toastTrigger = document.getElementById('liveToastBtn')
+        const toastLiveExample = document.getElementById('liveToast')
+        if (toastTrigger) {
+          toastTrigger.addEventListener('click', () => {
+            const toast = new bootstrap.Toast(toastLiveExample)
+            toast.show()
+          })
+        }
+      });
+    </script>
+    <section class="section-pad container" id="features">
+    <ul class="nav nav-tabs" id="productTabs" role="tablist">
+      <li class="nav-item" role="presentation">
+        <button class="nav-link active" id="all-tab" data-bs-toggle="tab" data-bs-target="#all" type="button" role="tab">All</button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" id="gadgets-tab" data-bs-toggle="tab" data-bs-target="#gadgets" type="button" role="tab">Gadgets</button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" id="fashion-tab" data-bs-toggle="tab" data-bs-target="#fashion" type="button" role="tab">Fashion</button>
+      </li>
+    </ul>
+    <div class="tab-content pt-3">
+      <div class="tab-pane fade show active" id="all" role="tabpanel">
+        <div class="row g-4">
+
+      <div class="col-md-4">
+        <div class="card h-100 shadow-soft rounded-2xl">
+          <img class="card-img-top" src="https://picsum.photos/seed/Product1/600/400" alt="">
+          <div class="card-body">
+            <h5 class="card-title">Product 1</h5>
+            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur blandit tempus porttitor.</p>
+            <a class="btn btn-primary" data-bs-toggle="modal" href="#ProductModal1" role="button">View</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal fade" id="ProductModal1" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Product 1 Details</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+              <p>Extended info about product 1. Vivamus sagittis lacus vel augue laoreet.</p>
+              <div class="accordion" id="acc1">
+                <div class="accordion-item">
+                  <h2 class="accordion-header">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#coll1A">More Info</button>
+                  </h2>
+                  <div id="coll1A" class="accordion-collapse collapse show" data-bs-parent="#acc1">
+                    <div class="accordion-body">This section reveals more details.</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button class="btn btn-primary">Add</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="col-md-4">
+        <div class="card h-100 shadow-soft rounded-2xl">
+          <img class="card-img-top" src="https://picsum.photos/seed/Product2/600/400" alt="">
+          <div class="card-body">
+            <h5 class="card-title">Product 2</h5>
+            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur blandit tempus porttitor.</p>
+            <a class="btn btn-primary" data-bs-toggle="modal" href="#ProductModal2" role="button">View</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal fade" id="ProductModal2" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Product 2 Details</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+              <p>Extended info about product 2. Vivamus sagittis lacus vel augue laoreet.</p>
+              <div class="accordion" id="acc2">
+                <div class="accordion-item">
+                  <h2 class="accordion-header">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#coll2A">More Info</button>
+                  </h2>
+                  <div id="coll2A" class="accordion-collapse collapse show" data-bs-parent="#acc2">
+                    <div class="accordion-body">This section reveals more details.</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button class="btn btn-primary">Add</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="col-md-4">
+        <div class="card h-100 shadow-soft rounded-2xl">
+          <img class="card-img-top" src="https://picsum.photos/seed/Product3/600/400" alt="">
+          <div class="card-body">
+            <h5 class="card-title">Product 3</h5>
+            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur blandit tempus porttitor.</p>
+            <a class="btn btn-primary" data-bs-toggle="modal" href="#ProductModal3" role="button">View</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal fade" id="ProductModal3" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Product 3 Details</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+              <p>Extended info about product 3. Vivamus sagittis lacus vel augue laoreet.</p>
+              <div class="accordion" id="acc3">
+                <div class="accordion-item">
+                  <h2 class="accordion-header">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#coll3A">More Info</button>
+                  </h2>
+                  <div id="coll3A" class="accordion-collapse collapse show" data-bs-parent="#acc3">
+                    <div class="accordion-body">This section reveals more details.</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button class="btn btn-primary">Add</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="col-md-4">
+        <div class="card h-100 shadow-soft rounded-2xl">
+          <img class="card-img-top" src="https://picsum.photos/seed/Product4/600/400" alt="">
+          <div class="card-body">
+            <h5 class="card-title">Product 4</h5>
+            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur blandit tempus porttitor.</p>
+            <a class="btn btn-primary" data-bs-toggle="modal" href="#ProductModal4" role="button">View</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal fade" id="ProductModal4" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Product 4 Details</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+              <p>Extended info about product 4. Vivamus sagittis lacus vel augue laoreet.</p>
+              <div class="accordion" id="acc4">
+                <div class="accordion-item">
+                  <h2 class="accordion-header">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#coll4A">More Info</button>
+                  </h2>
+                  <div id="coll4A" class="accordion-collapse collapse show" data-bs-parent="#acc4">
+                    <div class="accordion-body">This section reveals more details.</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button class="btn btn-primary">Add</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="col-md-4">
+        <div class="card h-100 shadow-soft rounded-2xl">
+          <img class="card-img-top" src="https://picsum.photos/seed/Product5/600/400" alt="">
+          <div class="card-body">
+            <h5 class="card-title">Product 5</h5>
+            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur blandit tempus porttitor.</p>
+            <a class="btn btn-primary" data-bs-toggle="modal" href="#ProductModal5" role="button">View</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal fade" id="ProductModal5" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Product 5 Details</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+              <p>Extended info about product 5. Vivamus sagittis lacus vel augue laoreet.</p>
+              <div class="accordion" id="acc5">
+                <div class="accordion-item">
+                  <h2 class="accordion-header">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#coll5A">More Info</button>
+                  </h2>
+                  <div id="coll5A" class="accordion-collapse collapse show" data-bs-parent="#acc5">
+                    <div class="accordion-body">This section reveals more details.</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button class="btn btn-primary">Add</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="col-md-4">
+        <div class="card h-100 shadow-soft rounded-2xl">
+          <img class="card-img-top" src="https://picsum.photos/seed/Product6/600/400" alt="">
+          <div class="card-body">
+            <h5 class="card-title">Product 6</h5>
+            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur blandit tempus porttitor.</p>
+            <a class="btn btn-primary" data-bs-toggle="modal" href="#ProductModal6" role="button">View</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal fade" id="ProductModal6" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Product 6 Details</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+              <p>Extended info about product 6. Vivamus sagittis lacus vel augue laoreet.</p>
+              <div class="accordion" id="acc6">
+                <div class="accordion-item">
+                  <h2 class="accordion-header">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#coll6A">More Info</button>
+                  </h2>
+                  <div id="coll6A" class="accordion-collapse collapse show" data-bs-parent="#acc6">
+                    <div class="accordion-body">This section reveals more details.</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button class="btn btn-primary">Add</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+</div>
+      </div>
+      <div class="tab-pane fade" id="gadgets" role="tabpanel">
+        <div class="row g-4">
+
+      <div class="col-md-6">
+        <div class="card h-100 shadow-soft rounded-2xl">
+          <img class="card-img-top" src="https://picsum.photos/seed/Gadget1/600/400" alt="">
+          <div class="card-body">
+            <h5 class="card-title">Gadget 1</h5>
+            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur blandit tempus porttitor.</p>
+            <a class="btn btn-primary" data-bs-toggle="modal" href="#GadgetModal1" role="button">View</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal fade" id="GadgetModal1" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Gadget 1 Details</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+              <p>Extended info about gadget 1. Vivamus sagittis lacus vel augue laoreet.</p>
+              <div class="accordion" id="acc1">
+                <div class="accordion-item">
+                  <h2 class="accordion-header">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#coll1A">More Info</button>
+                  </h2>
+                  <div id="coll1A" class="accordion-collapse collapse show" data-bs-parent="#acc1">
+                    <div class="accordion-body">This section reveals more details.</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button class="btn btn-primary">Add</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="col-md-6">
+        <div class="card h-100 shadow-soft rounded-2xl">
+          <img class="card-img-top" src="https://picsum.photos/seed/Gadget2/600/400" alt="">
+          <div class="card-body">
+            <h5 class="card-title">Gadget 2</h5>
+            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur blandit tempus porttitor.</p>
+            <a class="btn btn-primary" data-bs-toggle="modal" href="#GadgetModal2" role="button">View</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal fade" id="GadgetModal2" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Gadget 2 Details</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+              <p>Extended info about gadget 2. Vivamus sagittis lacus vel augue laoreet.</p>
+              <div class="accordion" id="acc2">
+                <div class="accordion-item">
+                  <h2 class="accordion-header">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#coll2A">More Info</button>
+                  </h2>
+                  <div id="coll2A" class="accordion-collapse collapse show" data-bs-parent="#acc2">
+                    <div class="accordion-body">This section reveals more details.</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button class="btn btn-primary">Add</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="col-md-6">
+        <div class="card h-100 shadow-soft rounded-2xl">
+          <img class="card-img-top" src="https://picsum.photos/seed/Gadget3/600/400" alt="">
+          <div class="card-body">
+            <h5 class="card-title">Gadget 3</h5>
+            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur blandit tempus porttitor.</p>
+            <a class="btn btn-primary" data-bs-toggle="modal" href="#GadgetModal3" role="button">View</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal fade" id="GadgetModal3" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Gadget 3 Details</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+              <p>Extended info about gadget 3. Vivamus sagittis lacus vel augue laoreet.</p>
+              <div class="accordion" id="acc3">
+                <div class="accordion-item">
+                  <h2 class="accordion-header">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#coll3A">More Info</button>
+                  </h2>
+                  <div id="coll3A" class="accordion-collapse collapse show" data-bs-parent="#acc3">
+                    <div class="accordion-body">This section reveals more details.</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button class="btn btn-primary">Add</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+</div>
+      </div>
+      <div class="tab-pane fade" id="fashion" role="tabpanel">
+        <div class="row g-4">
+
+      <div class="col-md-6">
+        <div class="card h-100 shadow-soft rounded-2xl">
+          <img class="card-img-top" src="https://picsum.photos/seed/Fashion1/600/400" alt="">
+          <div class="card-body">
+            <h5 class="card-title">Fashion 1</h5>
+            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur blandit tempus porttitor.</p>
+            <a class="btn btn-primary" data-bs-toggle="modal" href="#FashionModal1" role="button">View</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal fade" id="FashionModal1" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Fashion 1 Details</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+              <p>Extended info about fashion 1. Vivamus sagittis lacus vel augue laoreet.</p>
+              <div class="accordion" id="acc1">
+                <div class="accordion-item">
+                  <h2 class="accordion-header">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#coll1A">More Info</button>
+                  </h2>
+                  <div id="coll1A" class="accordion-collapse collapse show" data-bs-parent="#acc1">
+                    <div class="accordion-body">This section reveals more details.</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button class="btn btn-primary">Add</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="col-md-6">
+        <div class="card h-100 shadow-soft rounded-2xl">
+          <img class="card-img-top" src="https://picsum.photos/seed/Fashion2/600/400" alt="">
+          <div class="card-body">
+            <h5 class="card-title">Fashion 2</h5>
+            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur blandit tempus porttitor.</p>
+            <a class="btn btn-primary" data-bs-toggle="modal" href="#FashionModal2" role="button">View</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal fade" id="FashionModal2" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Fashion 2 Details</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+              <p>Extended info about fashion 2. Vivamus sagittis lacus vel augue laoreet.</p>
+              <div class="accordion" id="acc2">
+                <div class="accordion-item">
+                  <h2 class="accordion-header">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#coll2A">More Info</button>
+                  </h2>
+                  <div id="coll2A" class="accordion-collapse collapse show" data-bs-parent="#acc2">
+                    <div class="accordion-body">This section reveals more details.</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button class="btn btn-primary">Add</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="col-md-6">
+        <div class="card h-100 shadow-soft rounded-2xl">
+          <img class="card-img-top" src="https://picsum.photos/seed/Fashion3/600/400" alt="">
+          <div class="card-body">
+            <h5 class="card-title">Fashion 3</h5>
+            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur blandit tempus porttitor.</p>
+            <a class="btn btn-primary" data-bs-toggle="modal" href="#FashionModal3" role="button">View</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal fade" id="FashionModal3" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Fashion 3 Details</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+              <p>Extended info about fashion 3. Vivamus sagittis lacus vel augue laoreet.</p>
+              <div class="accordion" id="acc3">
+                <div class="accordion-item">
+                  <h2 class="accordion-header">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#coll3A">More Info</button>
+                  </h2>
+                  <div id="coll3A" class="accordion-collapse collapse show" data-bs-parent="#acc3">
+                    <div class="accordion-body">This section reveals more details.</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button class="btn btn-primary">Add</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+</div>
+      </div>
+    </div>
+    </section>
+  <footer class="mt-5 py-4 bg-dark text-white text-center">
+    <div class="container">
+      <p class="mb-2">© 2025 Demo Site. All rights reserved.</p>
+      <a href="#" class="btn btn-outline-light btn-sm" data-bs-toggle="modal" data-bs-target="#subscribeModal">Subscribe</a>
+    </div>
+  </footer>
+
+  <!-- Global Subscribe Modal -->
+  <div class="modal fade" id="subscribeModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Stay in the loop</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form class="row g-3">
+            <div class="col-12">
+              <label class="form-label">Email</label>
+              <input type="email" class="form-control" placeholder="you@example.com">
+            </div>
+            <div class="col-12">
+              <label class="form-label">Interests</label>
+              <select class="form-select">
+                <option>News</option>
+                <option>Offers</option>
+                <option>Updates</option>
+              </select>
+            </div>
+            <div class="col-12 form-check">
+              <input class="form-check-input" type="checkbox" id="agree">
+              <label class="form-check-label" for="agree">I agree to receive emails.</label>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button class="btn btn-primary">Subscribe</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
